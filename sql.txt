@@ -1,0 +1,75 @@
+CREATE TABLE doctor (
+    doc_name VARCHAR(255) NOT NULL,
+    doc_email VARCHAR(255) PRIMARY KEY NOT NULL,
+    doc_pass VARCHAR(255) NOT NULL,
+    doc_specialty VARCHAR(255) NOT NULL,
+    doc_exp INT NOT NULL,
+    doc_num VARCHAR(20) unique NOT NULL,
+    doc_sq VARCHAR(255),
+    doc_sa VARCHAR(255),
+    doc_fee DECIMAL(10, 2) DEFAULT 500.00 NOT NULL,
+    status VARCHAR(50) DEFAULT 'not verified'
+);
+
+CREATE TABLE admin (
+    admin_name VARCHAR(255) NOT NULL,
+    admin_email VARCHAR(255) PRIMARY KEY NOT NULL,
+    admin_pass VARCHAR(255) NOT NULL,
+    admin_no VARCHAR(20) unique NOT NULL,
+    admin_sq VARCHAR(255),
+    admin_sa VARCHAR(255)
+);
+
+
+CREATE TABLE patient (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    pat_name VARCHAR(255) NOT NULL,
+    pat_email VARCHAR(255) unique NOT NULL,
+    pat_pass VARCHAR(255) NOT NULL,
+    pat_sq VARCHAR(255),
+    pat_sa VARCHAR(255)
+);
+
+
+CREATE TABLE appointment (
+    appointment_id INT AUTO_INCREMENT PRIMARY KEY,
+    doctor_name VARCHAR(100) NOT NULL,
+    doctor_email VARCHAR(100) NOT NULL,
+    pat_name VARCHAR(100) NOT NULL,
+    pat_number BIGINT NOT NULL,
+    pat_email VARCHAR(100) NOT NULL,
+    pat_gender VARCHAR(10) NOT NULL,
+    pat_age INT NOT NULL,
+    appointment_date DATE NOT NULL,
+    appointment_time TIME NOT NULL,
+    doc_fee DECIMAL(10, 2) NOT NULL,
+    pat_status VARCHAR(20) DEFAULT 'not set'
+);
+
+CREATE TABLE emergency_service (
+    emer_email VARCHAR(255) PRIMARY KEY NOT NULL,
+    emer_pass VARCHAR(255) NOT NULL,
+    emer_no VARCHAR(20) unique NOT NULL,
+    emer_sq VARCHAR(255),
+    emer_sa VARCHAR(255),
+    emer_type VARCHAR(255),
+    emer_loc VARCHAR(255),
+    emer_car_no VARCHAR(255),
+    status VARCHAR(50) DEFAULT 'not verified'
+);
+
+CREATE TABLE booking (
+    booking_id INT AUTO_INCREMENT PRIMARY KEY,
+    emer_car_no VARCHAR(100) NOT NULL,
+    emer_email VARCHAR(100) NOT NULL,
+    emer_no VARCHAR(100) NOT NULL,
+    booking_type VARCHAR(100) NOT NULL,
+    pat_name VARCHAR(100) NOT NULL,
+    pat_number VARCHAR(15) NOT NULL,
+    pat_email VARCHAR(100) NOT NULL,
+    pat_address VARCHAR(255) NOT NULL,
+    appointment_date DATE NOT NULL,
+    appointment_time TIME NOT NULL,
+    pat_status VARCHAR(20) DEFAULT 'not set'
+);
+
